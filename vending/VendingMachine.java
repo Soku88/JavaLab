@@ -6,6 +6,7 @@ public class VendingMachine {
 	private Scanner sc;		//Member field에는 선언만 해준다.
 	private Can[] canArr;
 	private int sum;
+	private int myMoney;
 	
 	public VendingMachine() { //main에 init()메소드 전달
 		init();
@@ -45,12 +46,15 @@ public class VendingMachine {
 //		sc.close();
 //		}
 	
+	//메뉴 입력받는 메서드
 	public void purchase() {
 		int menu = 0;
 		while(true) {
 			System.out.print("메뉴 입력 (종료 : 0) : ");
 			menu = sc.nextInt();
-			if(menu == 0) {
+			
+			if(myMoney < sum || myMoney < 0) {
+				System.out.println("잔액이 부족합니다.");
 				break;
 			} else if (menu > canArr.length || menu < 0) {
 				System.out.println("잘못 입력하셨습니다. 다시입력해 주세요");
@@ -59,8 +63,14 @@ public class VendingMachine {
 												  //int형(.getPrice)으로 sum연산
 			}
 		}
-		System.out.println(sum); //if문 밖에서 실행
+		System.out.println("총 구매 금액 :" + sum); //if문 밖에서 실행
 		sc.close(); //자원정리//
 	}	
+	
+	
+	public void myMoney() {
+		System.out.println("현재 소지 금액을 입력하세요 : ");
+		myMoney = sc.nextInt();
+	}
 }
 

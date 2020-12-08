@@ -9,7 +9,7 @@ public class privateTest {
 		
 		System.out.println(pT2.getName());
 		System.out.println(pT2.getAge());
-		
+		System.out.println(pT2.getClass().getTypeName());		
 		
 	}
 
