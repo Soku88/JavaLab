@@ -1,6 +1,6 @@
 package com.koreait.first.abst;
 
-public class AbstractTest { //추상메서드
+public class AbstractTest {
 
 	public static void main(String[] args) {
 		
@@ -11,6 +11,8 @@ public class AbstractTest { //추상메서드
 		ab.shakeTail();
 		
 		((AbstB)aa).shakeTail();
+		
+		
 	}
 
 }
