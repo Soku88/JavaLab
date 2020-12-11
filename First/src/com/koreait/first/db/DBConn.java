@@ -4,20 +4,20 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBUtils {
+public class DBConn {
 
-	public static Connection getCon() {
+	public static Connection Conn() {
 		Connection con = null; 
 
-		final String URL = "jdbc:mysql://localhost:3306/test1";
-		final String USER = "root";
-		final String PW = "150206";
+		final String url = "jdbc:mysql://localhost:3306/test1";
+		final String id = "root";
+		final String pw = "150206";
 
-		// static method
 		try {
+
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection(URL, USER, PW);
-			System.out.println("접속완료");
+			con = DriverManager.getConnection(url, id, pw);
+			System.out.println("DB Connected...");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -25,14 +25,16 @@ public class DBUtils {
 		return con;
 	}
 
-	public static void close(Connection con) {
+	public static void DbClose(Connection con) {
 		if (con != null) {
 			try {
 				con.close();
-				System.out.println("접속종료");
+				System.out.println("DB Closed...");
 			} catch (SQLException e) {
+
 				e.printStackTrace();
 			}
 		}
 	}
+
 }
