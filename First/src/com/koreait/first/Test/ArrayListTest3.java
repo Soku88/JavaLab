@@ -9,23 +9,14 @@ public class ArrayListTest3 {
 		list.add(110);
 		list.add(220);
 		list.add(1, 330);
+		list.add(0, 100);
 
 		System.out.println(list);
-		
+
 		System.out.println("remove : " + list.remove(1)); // --del : 500
-		
+
 		System.out.println(list);
 
-
 	}
 
-}
-
-class PrintSt{
-	void println(Object o) {
-		
-	}
-	void println(String str) {
-		
-	}
 }

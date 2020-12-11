@@ -65,7 +65,7 @@ public class MyArrayList {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("(");
+		StringBuilder sb = new StringBuilder("[");
 		for(int i=0; i<arr.length; i++) {
 			sb.append(arr[i]);
 			
@@ -73,7 +73,7 @@ public class MyArrayList {
 				sb.append(", ");
 			}
 		}
-		sb.append(")");
+		sb.append("]");
 		return sb.toString();
 	}
 	
@@ -90,6 +90,17 @@ public class MyArrayList {
 			temp2[i] = arr[i];
 		}
 		arr = temp2; // 복사해준 배열을 다시 arr에 대입 = 얕은 복사
+	}
+	
+	private int[] arr3 = new int[0];
+	
+	public void add3(int val) {
+		int[] temp3 = new int[arr.length + 1]; //기존의 배열공간보다 +1 공간생성
+		temp3[arr.length] = val;
+		for(int i=0; i<arr.length; i++) {
+			temp3[i] = arr[i]; // temp3에 arr값 입력
+		}
+		arr = temp3;
 	}
 
 }

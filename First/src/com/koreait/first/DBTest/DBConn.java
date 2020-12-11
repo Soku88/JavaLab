@@ -7,7 +7,7 @@ public class DBConn {
 	public static void main(String[] args) {
 		// 연결관련 정보(멤버)
 		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://localhost:3306/test1?serverTimeZone=UTC"; //타임존에러 :-(
+		String url = "jdbc:mysql://localhost:3306/test1"; //타임존에러 :-(
 		String user = "root";
 		String pwd = "150206";
 
