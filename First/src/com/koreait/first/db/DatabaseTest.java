@@ -11,8 +11,11 @@ public class DatabaseTest {
 //		Connection con2 = DBConn.Conn();
 //		DBConn.DbClose(con2);
 		
-		Connection con3 = DBTest.Conn();
-		DBTest.close(con3);
+//		Connection con3 = DBTest.Conn();
+//		DBTest.close(con3);
+		
+		Connection con4 = DataBase1.getCon();
+		DataBase1.DBCS(con4);
 	}
 
 }
