@@ -1,4 +1,4 @@
-package koreait.com.test;
+package conntest.com.test;
 
 public class Card {
 	private final String SHAPE;
@@ -8,18 +8,21 @@ public class Card {
 		this.SHAPE = shape;
 		this.VALUE = value;
 	}
-
+	
 	public String getSHAPE() {
 		return SHAPE;
 	}
-
 	public String getVALUE() {
 		return VALUE;
 	}
 
-	@Override // toString 재정의
+	@Override
 	public String toString() {
-		return SHAPE + " " + "(" + VALUE + ")";
+		return SHAPE + VALUE;
 	}
+	
+	
+	
+	
 
 }

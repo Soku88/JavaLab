@@ -10,7 +10,7 @@ public class DataBase1 {
 		Connection con = null;
 		final String url = "jdbc:mysql://localhost:3306/test1";
 		final String usr = "root";
-		final String pw = "150206";
+		final String pw = "";
 
 		try {
 

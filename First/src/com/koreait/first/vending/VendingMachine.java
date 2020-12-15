@@ -67,7 +67,7 @@ public class VendingMachine {
 				System.out.println("잘못 입력하셨습니다. 다시입력해 주세요");
 			} else {
 				sum += canArr[choiceMenu - 1].getPrice(); // canArr[menu-1] < 배열의 주소값 이므로
-														  // int형(.getPrice)으로 sum연산
+															// int형(.getPrice)으로 sum연산
 			}
 		}
 		sc.close(); // 자원정리
@@ -76,9 +76,10 @@ public class VendingMachine {
 	public void myMoney() {
 		System.out.println("현재 소지 금액을 입력하세요 : ");
 		myMoney = sc.nextInt();
-		
+
 	}
+
 	public void showSum() {
-		System.out.println("총 구매 금액 :" + sum);
+		System.out.println("총 구매 금액 : " + sum);
 	}
 }

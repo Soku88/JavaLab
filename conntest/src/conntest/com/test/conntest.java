@@ -1,36 +1,40 @@
-package koreait.com.test;
+package conntest.com.test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DB {
-	public static Connection con() {
+public class conntest {
+
+	public static Connection Con() {
 		Connection con = null;
-		
+
 		final String url = "jdbc:mysql://localhost:3306/test1";
 		final String usr = "root";
 		final String pw = "150206";
-		
+
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(url, usr, pw);
-			System.out.println("DB Connected...");
+			System.out.println("Driver connected...");
+
 		} catch (Exception e) {
+
 			e.printStackTrace();
 		}
-		return con;	
+		return null;
+
 	}
-	
-	public static void DBClose(Connection con) {
-		if(con != null) {
+
+	public static void setClose(Connection con) {
+		if (con != null) {
 			try {
 				con.close();
-				System.out.println("DB Closed...");
+				System.out.println("Driver Closed...");
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			e.printStackTrace();
 			}
 		}
+
 	}
 }

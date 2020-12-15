@@ -1,28 +1,30 @@
-package koreait.com.test;
+package conntest.com.test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DB {
-	public static Connection con() {
+public class DBtest {
+
+	public static Connection getDB() {
 		Connection con = null;
-		
+
 		final String url = "jdbc:mysql://localhost:3306/test1";
 		final String usr = "root";
 		final String pw = "150206";
-		
+
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(url, usr, pw);
-			System.out.println("DB Connected...");
+			System.out.println("DB Connected....");
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return con;	
+
+		return con;
 	}
-	
-	public static void DBClose(Connection con) {
+	public static void close(Connection con) {
 		if(con != null) {
 			try {
 				con.close();
@@ -32,5 +34,7 @@ public class DB {
 				e.printStackTrace();
 			}
 		}
+		
 	}
+
 }
