@@ -23,10 +23,22 @@ class Cat extends Animal {
 	}
 }
 class Bird extends Animal {
+//	@Override
+//	void crying() {
+//		System.out.println("짹짹");
+//	}
+//	
+	void flying() {
+		System.out.println("훨훨 난다");
+	}
+}
+class Fish extends Animal {
+
 	@Override
 	void crying() {
-		System.out.println("짹짹");
+		System.out.println("뻐금뻐끔");
 	}
+	
 }
 
 
