@@ -20,7 +20,7 @@ public class card2 {
 		for (int i = 0; i < card.length; i++) {
 			System.out.println(card[i]);
 		}
-		
+
 		System.out.println(card.length);
 	}
 

@@ -10,6 +10,7 @@ public class OverWatchMain {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("캐릭터를 선택해 주세요 (1.ripper 2.mei 3.Mccri) : ");
 		int getChar = sc.nextInt();
+		
 
 		if (getChar == 1) {
 			over = new Ripper();
@@ -19,7 +20,12 @@ public class OverWatchMain {
 			over = new Mccri();
 		}
 		
-		getInfo(over);
+//		OverWatch ov1 = new Ripper();
+//		OverWatch ov2 = new Mei();
+//		OverWatch ov3 = new Mccri();
+//		getInfo(ov1);
+//		getInfo(ov2);
+//		getInfo(ov3);
 
 	}
 
