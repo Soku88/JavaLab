@@ -7,7 +7,7 @@ public class DBConn {
 	public static void main(String[] args) {
 		// 연결관련 정보(멤버)
 		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://localhost:3306/test1"; //타임존에러 :-(
+		String url = "jdbc:mysql://localhost:3306/stocker?serverTimezone=UTC"; //타임존에러 :-(
 		String user = "root";
 		String pwd = "150206";
 
@@ -22,9 +22,10 @@ public class DBConn {
 			System.out.println("Driver Loading Success");
 			conn = DriverManager.getConnection(url, user, pwd);
 			System.out.println("DB Connected...");
-			sql = "select * from productTbl";
+			sql = "select * from author";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
+			System.out.println(rs.next());
 
 			while (rs.next()) {
 				System.out.println(rs.getString("prodname") + " ");
