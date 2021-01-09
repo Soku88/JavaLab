@@ -14,7 +14,6 @@ public class P_Explore extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Succes...");
 		request.setAttribute("page", "Explore");
 		request.getRequestDispatcher("/WEB-INF/JSP/template/template.jsp").forward(request, response);
 	}

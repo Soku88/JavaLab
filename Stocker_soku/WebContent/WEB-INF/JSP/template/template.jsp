@@ -8,6 +8,11 @@
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-	<jsp:include page="./header.jsp"></jsp:include>
+	<div id="wrap">
+		<jsp:include page="./header.jsp"></jsp:include>
+		<main>
+		<jsp:include page="../${page}.jsp"></jsp:include>
+		</main>
+	</div>
 </body>
 </html>

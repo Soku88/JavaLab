@@ -14,7 +14,6 @@ public class P_Login extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Succes...");
 		request.setAttribute("page", "Login");
 		request.getRequestDispatcher("/WEB-INF/JSP/template/template.jsp").forward(request, response);
 	}

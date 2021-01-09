@@ -14,7 +14,6 @@ public class P_Home extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Succes...");
 		request.setAttribute("page", "Home");
 		request.getRequestDispatcher("/WEB-INF/JSP/template/template.jsp").forward(request, response);
 	}

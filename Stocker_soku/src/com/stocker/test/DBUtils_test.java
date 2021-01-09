@@ -16,7 +16,7 @@ public class DBUtils_test {
 			e.printStackTrace();
 		} finally {
 			try {
-				DBUtil.closeConn(conn);
+				DBUtil.close(conn, null);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
