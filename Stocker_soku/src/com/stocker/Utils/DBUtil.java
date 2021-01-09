@@ -2,6 +2,8 @@ package com.stocker.Utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class DBUtil {
 
@@ -16,11 +18,19 @@ public class DBUtil {
 		return conn;
 	}
 
-	public static void closeConn(Connection conn) throws Exception {
-		if(conn != null) {
-			conn.close();
-			System.out.println("DB Closed...");
+	public static void close(Connection conn, PreparedStatement ps) {
+		if(ps != null) {
+			try { ps.close(); } catch (Exception e) {}
 		}
 		
+		if(conn != null) {
+			try { conn.close(); } catch (Exception e) {}
+		}		
+	}
+	public static void closeConn(Connection conn, PreparedStatement ps, ResultSet rs) throws Exception {
+		if(rs != null) {
+			try {rs.close();} catch (Exception e) {}
+		}
+		close(conn, ps);
 	}
 }
