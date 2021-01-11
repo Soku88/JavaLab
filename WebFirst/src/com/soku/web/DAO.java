@@ -7,6 +7,72 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DAO {
+	public static int updHobby(HobbyEntity param) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+
+		String sql = "";
+
+		try {
+			conn = DBUtils.getCon();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, param.getName());
+			ps.setInt(1, param.getId());
+			return ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.close(conn, ps);
+		}
+
+		return 0;
+	}
+
+	public static int DelHobby(HobbyEntity param) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "DELETE FROM hobby where id=?";
+
+		try {
+			conn = DBUtils.getCon();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, param.getId());
+			return ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.close(conn, ps);
+		}
+
+		return 0;
+
+	}
+
+	public static int insHobby(HobbyEntity param) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "INSERT INTO hobby " + "(id, name) " + "values "
+//				+ " (" + param.getId() + ", '" + param.getName() + "') "
+				+ "(?, ?) ";
+
+		try {
+			conn = DBUtils.getCon();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, param.getId());
+			ps.setString(2, param.getName());
+			System.out.println(ps); // 쿼리문
+			return ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.close(conn, ps);
+		}
+
+		return 0;
+
+	}
+
 	public static List<HobbyEntity> selHobbyList() {
 		List<HobbyEntity> list = new ArrayList();
 

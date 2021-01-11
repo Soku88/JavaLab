@@ -27,7 +27,7 @@ public class DBUtil {
 			try { conn.close(); } catch (Exception e) {}
 		}		
 	}
-	public static void closeConn(Connection conn, PreparedStatement ps, ResultSet rs) throws Exception {
+	public static void closeConn(Connection conn, PreparedStatement ps, ResultSet rs) {
 		if(rs != null) {
 			try {rs.close();} catch (Exception e) {}
 		}

@@ -4,6 +4,8 @@ package com.soku.web;
 public class HobbyEntity {
 	private int id;
 	private String name;
+	
+	
 	public int getId() {
 		return id;
 	}

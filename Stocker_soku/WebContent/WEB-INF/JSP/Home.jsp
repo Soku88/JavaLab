@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <section id="content">
-	<h2>Welcome page</h2>
+		${list} 
 </section>

@@ -7,40 +7,61 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DAO3 {
-	
-	public static List<HobbyEntity> setHobby() {
-		List<HobbyEntity> list3 = new ArrayList();
-		
-		Connection con = null;
+
+	public static List<HobbyEntity> selHobby() {
+		List<HobbyEntity> list = new ArrayList();
+
+		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
-		String sql = "";
-		
+
+		String sql = "SELECT * FROM hobby ";
+
 		try {
-			con = DBUtils.getCon();
-			ps = con.prepareStatement(sql); //sql문 받아오는애
-			rs = ps.executeQuery(); // 쿼리문 작성해주는애
-			
-			while(rs.next()) {
-				//column명으로 값을 받아줄 변수생성
-				int n1 = rs.getInt("id");
-				String s1 = rs.getString("name");
-				
-				//값을 담아줄 객체 생성
-				HobbyEntity lo = new HobbyEntity();
-				lo.setId(n1);
-				lo.setName(s1);
-				list3.add(lo); 
-				
+			conn = DBUtils.getCon();
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+
+				HobbyEntity he = new HobbyEntity();
+				he.setId(id);
+				he.setName(name);
+				list.add(he);
+
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBUtils.close(con, ps, rs);
+			DBUtils.close(conn, ps, rs);
 		}
 
-		return list3;		
+		return list;
+
+	}
+
+	public static int isnHobby(HobbyEntity param) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		String sql = "INSERT INTO hobby (id, name) " + "values " + "(?, ?)";
+
+		try {
+			conn = DBUtils.getCon();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, param.getId());
+			ps.setString(2, param.getName());
+			return ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.close(conn, ps);
+		}
+
+		return 0;
 	}
 
 }
