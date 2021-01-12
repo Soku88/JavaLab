@@ -9,7 +9,13 @@ public class ArticleDao_test {
 
 	public static void main(String[] args) {
 		
-		List<ArticleDTO> list = ArticleDao.getAllArticle();
+		List<ArticleDTO> list = ArticleDao.selectAll();
+		
+		
+//		for(ArticleDTO dto : ArticleDao.selectAll()) {
+//			System.out.println(dto);
+//			
+//		}
 	}
 
 }

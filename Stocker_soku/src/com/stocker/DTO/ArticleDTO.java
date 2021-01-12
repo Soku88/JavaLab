@@ -20,7 +20,7 @@ public class ArticleDTO extends Article {
 		return str.toString();
 	}
 	
-	public String getAurhor_nm() {
+	public String getAuthor_nm() {
 		return author_nm;
 	}
 	public void setAuthor_nm(String author_nm) {

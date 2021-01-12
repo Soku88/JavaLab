@@ -13,13 +13,16 @@ public class modHobbyServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int hobby = Integer.parseInt(request.getParameter("id"));
+		String hobby_nm = request.getParameter("name");
 
-		System.out.println("hobby : " + hobby);
+		// 자료를 가져와서 화면에 내용을 뿌린다
+		HobbyEntity param = new HobbyEntity();
+		param.setName(hobby_nm);
+		HobbyEntity data = DAO.selHobby(param);
+		request.setAttribute("data", data);
 
 		String jsp = "WEB-INF/JSP/modHobby.jsp";
 		request.getRequestDispatcher(jsp).forward(request, response);
-		// 자료를 가져와서 화면에 내용을 뿌린다
 
 		// 그 화면에서 수정한다.
 
@@ -30,7 +33,7 @@ public class modHobbyServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		int hobby_id = Integer.parseInt(request.getParameter("id"));
-		String hobby_nm = request.getParameter("hobby_nm");
+		String hobby_nm = request.getParameter("name");
 
 		System.out.println("hobby_nm : " + hobby_nm);
 
@@ -41,7 +44,6 @@ public class modHobbyServlet extends HttpServlet {
 		// 수정처리
 		DAO.updHobby(param);
 		response.sendRedirect("/Hobby");
-
 
 	}
 

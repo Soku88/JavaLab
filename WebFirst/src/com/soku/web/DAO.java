@@ -51,9 +51,8 @@ public class DAO {
 	public static int insHobby(HobbyEntity param) {
 		Connection conn = null;
 		PreparedStatement ps = null;
-		String sql = "INSERT INTO hobby " + "(id, name) " + "values "
-//				+ " (" + param.getId() + ", '" + param.getName() + "') "
-				+ "(?, ?) ";
+		String sql = "INSERT INTO hobby " + "(id, name) "
+					+ "SELECT IFNULL(MAX(id), 0) + 1, ? FROM hobby ";
 
 		try {
 			conn = DBUtils.getCon();
@@ -72,6 +71,34 @@ public class DAO {
 		return 0;
 
 	}
+	public static HobbyEntity selHobby(HobbyEntity param) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT name FROM hobby WHERE id = ?";
+		
+		try {
+			conn = DBUtils.getCon();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, param.getId());
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				HobbyEntity vo = new HobbyEntity();
+				String name = rs.getString("name");
+				vo.setName(name);
+				return vo;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.close(conn, ps, rs);
+		}
+		return null;
+		
+	}
+	
 
 	public static List<HobbyEntity> selHobbyList() {
 		List<HobbyEntity> list = new ArrayList();
