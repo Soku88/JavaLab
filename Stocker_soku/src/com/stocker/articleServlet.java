@@ -1,4 +1,4 @@
-package com.soku.board;
+package com.stocker;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,21 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/detail")
-public class BoardDetailServlet extends HttpServlet {
+@WebServlet("/article")
+public class articleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String str_id = request.getParameter("i_board");
-		int id = Integer.parseInt(str_id);
-
-		System.out.println(id);
+//		String id = request.getParameter("id");
+		System.out.println(request.getParameter("id"));
 		
 		
-
-		String jsp = "WEB-INF/JSP/detail.jsp";
-		request.getRequestDispatcher(jsp).forward(request, response);
+		
 	}
 
 }

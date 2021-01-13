@@ -7,21 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/detail")
-public class BoardDetailServlet extends HttpServlet {
+@WebServlet("/del")
+public class BoardDelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String str_id = request.getParameter("i_board");
-		int id = Integer.parseInt(str_id);
+		String str_id = request.getParameter("id");
 
-		System.out.println(id);
-		
-		
+		// TODO 삭제처리
 
-		String jsp = "WEB-INF/JSP/detail.jsp";
-		request.getRequestDispatcher(jsp).forward(request, response);
+		response.sendRedirect("/list");
 	}
 
 }

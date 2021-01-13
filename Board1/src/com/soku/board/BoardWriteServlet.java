@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.soku.board.dao.BoardDAO;
+import com.soku.board.model.BoardEntity;
+
 @WebServlet("/write")
 public class BoardWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,6 +28,11 @@ public class BoardWriteServlet extends HttpServlet {
 		
 		System.out.println(title);
 		System.out.println(ctnt);
+		
+		BoardEntity vo = new BoardEntity();
+		vo.setTitle(title);
+		vo.setCtnt(ctnt);
+		BoardDAO.insBoard(vo);
 		
 		response.sendRedirect("/list");
 	}

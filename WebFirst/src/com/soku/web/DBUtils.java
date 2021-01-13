@@ -17,11 +17,11 @@ public class DBUtils {
 
 	public static Connection getCon() throws Exception {
 
-		final String URL = "jdbc:mysql://localhost/test";
+		final String URL = "jdbc:mysql://localhost/JavaBoard1";
 		final String USER = "root";
 		final String PW = "150206";
 
-		Class.forName("com.mysql.cj.jdbc.Driver");
+//		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection conn = DriverManager.getConnection(URL, USER, PW);
 		System.out.println("DB Connected...");
 		return conn;

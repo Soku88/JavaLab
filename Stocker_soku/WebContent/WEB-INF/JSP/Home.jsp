@@ -1,21 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
 <section id="content">
 	<c:forEach var="article" items="${list}">
-		${article.getTitle()}
 		
-			<div class="item">
-				<img 
-					alt="Opne modal - ${article.getTitle()}" 
-					src="/images/img/${article.getFile_nm()}">
-			</div>
+		<div class="item" data-id="${article.id}">
+			<img 
+				alt="Open model - ${article.title}" 
+				src="/images/img/${article.file_nm}">
 			<div>
-				<strong>${article.getTitle()} </strong>
-				<small>${article.getAuthor_nm()} </small>
+				<strong>${article.title}</strong>
+				<small>${article.author_nm}</small>
 			</div>
-		<br>
+		</div>
+
 	</c:forEach>
 </section>
+
+<!-- <article id="modal" class="hide">
+	<div id="modal_inner"></div>
+</article> -->
+
+<script type="text/javascript" src="/JS/modal.js"></script>

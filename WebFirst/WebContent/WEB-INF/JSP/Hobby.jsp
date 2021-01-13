@@ -15,7 +15,7 @@
 	<h1>Hobby</h1>
 	<div>
 	<form id="frm" action="/Hobby" method="post" onsubmit="return hobbyChk();">	
-		<label>ID : <input type="hidden" name="id"></label>
+		<label>ID : <input type="text" name="id"></label>
 		<label>취미 : <input type="text" name="name" value="${data.name}"></label>
 		<input type="submit" value="등록">
 	</form>
