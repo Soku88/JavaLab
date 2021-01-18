@@ -34,6 +34,5 @@ public class DbUtils {
 		if (conn != null) {
 			try {conn.close();} catch (Exception e) {}
 		}
-
 	}
 }

@@ -15,5 +15,6 @@
             <jsp:include page="../${page}.jsp"/>
         </main>
     </div>
+    <script src="/JS/modal.js"></script>
 </body>
 </html>

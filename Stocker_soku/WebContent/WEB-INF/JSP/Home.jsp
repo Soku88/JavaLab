@@ -18,8 +18,8 @@
 	</c:forEach>
 </section>
 
-<!-- <article id="modal" class="hide">
+<article id="modal" class="hide">
 	<div id="modal_inner"></div>
-</article> -->
+</article>
 
 <script type="text/javascript" src="/JS/modal.js"></script>

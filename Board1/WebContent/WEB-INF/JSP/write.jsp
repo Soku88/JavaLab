@@ -10,7 +10,7 @@
 	<form action="/write" method="post">
 		<div><input type="text" name="title" placeHolder="제목"></div>
 		<div>
-			<label>내용
+			<label>
 				<textarea name="ctnt"></textarea>
 			</label>
 		</div>
