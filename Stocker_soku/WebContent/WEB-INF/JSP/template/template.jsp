@@ -10,7 +10,10 @@
 </head>
 <body>
     <div id="wrap">
-        <jsp:include page="./header.jsp"/>
+		<header>
+			<h1><a href="/">Stocker - ${page}</a></h1>
+			<jsp:include page="./nav_${sessionScope.c_user != null ? 'after' : 'before'}.jsp"/>
+		</header>
         <main>
             <jsp:include page="../${page}.jsp"/>
         </main>

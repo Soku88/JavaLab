@@ -2,26 +2,22 @@
     pageEncoding="UTF-8"%>
  <%@ page import="java.util.*" %>
  <%@ page import="com.soku.board.model.*" %>
- <%
- 	List<BoardEntity> list = (List)request.getAttribute("list");
- 	int pageLength = (int)request.getAttribute("pageLength");
- %>
+<%
+	List<BoardEntity> list = (List)request.getAttribute("list");
+	int pageLength = (int)request.getAttribute("pageLength");
+	
+	String strPage = request.getParameter("page");
+	if(strPage == null) {
+		strPage = "1";
+	}
+	int p = Integer.parseInt(strPage);
+%> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>List</title>
-<style>
-	.pagingContainer {
-		text-align: center;
-		padding: 20px;
-		font-size: 20px;
-	}
-	.pagingContainer a {
-		text-decoration: none;
-		margin: 10px;
-	}
-</style>
+<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 	<div>
@@ -45,9 +41,11 @@
 			<% } %>
 		</table>
 		<div class="pagingContainer">
-			<% for(int i=1; i<=pageLength; i++){%>
-			<a class="page" href="/list?page=<%=i%>"><%=i%></a>
-			<%}%>
+			<% for(int i=1; i<=pageLength; i++){ %>
+				<span class="page <%=p == i ? "selectedPage : " : "" %>">
+					<a class="page" href="/list?page=<%=i%>"><%=i%></a>
+				</span>
+			<% } %>
 		</div>
 	</div>
 </body>

@@ -3,7 +3,7 @@ package com.soku.web;
 //Entity, DTO, Domain
 public class HobbyEntity {
 	private int id;
-	private String name;
+	private String nm;
 	
 	
 	public int getId() {
@@ -12,11 +12,11 @@ public class HobbyEntity {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getNm() {
+		return getNm();
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNm(String name) {
+		this.nm = name;
 	}
 	
 	

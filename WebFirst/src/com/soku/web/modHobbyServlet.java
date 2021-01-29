@@ -17,7 +17,7 @@ public class modHobbyServlet extends HttpServlet {
 
 		// 자료를 가져와서 화면에 내용을 뿌린다
 		HobbyEntity param = new HobbyEntity();
-		param.setName(hobby_nm);
+		param.setNm(hobby_nm);
 		HobbyEntity data = DAO.selHobby(param);
 		request.setAttribute("data", data);
 
@@ -39,7 +39,7 @@ public class modHobbyServlet extends HttpServlet {
 
 		HobbyEntity param = new HobbyEntity();
 		param.setId(hobby_id);
-		param.setName(hobby_nm);
+		param.setNm(hobby_nm);
 
 		// 수정처리
 		DAO.updHobby(param);

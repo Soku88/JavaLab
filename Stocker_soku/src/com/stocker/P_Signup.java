@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.stocker.DAO.UserDao;
+import com.stocker.Model.User;
+
 
 @WebServlet("/Signup")
 public class P_Signup extends HttpServlet {
@@ -21,7 +24,21 @@ public class P_Signup extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		doGet(request, response);
+		User dto = new User();
+		
+		dto.setEmail(request.getParameter("email"));
+		dto.setNm(request.getParameter("nm"));
+		dto.setPw(request.getParameter("pw"));
+		
+		int result = UserDao.insert(dto);
+		
+		if(result == 1) {
+			response.sendRedirect("/Login");
+		} else {
+			request.setAttribute("err_msg", "이미 사용중인 email입니다.");
+			doGet(request, response);
+		}
+		
 	}
 
 }

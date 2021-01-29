@@ -1,10 +1,7 @@
 <%@page import="com.soku.board.model.BoardEntity"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%--     
- <%
- 	BoardEntity update = (BoardEntity)request.getAttribute("update");
- %> --%>
+
 <!DOCTYPE html>
 <html>
 <head>

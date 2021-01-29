@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.List" %>
-<%@ page import="com.soku.web.HobbyEntity"%>
-<%	
-	List<HobbyEntity> list = (List)request.getAttribute("list");
-%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,29 +10,34 @@
 </head>
 <body>
 	<h1>Hobby</h1>
-	<div>
-	<form id="frm" action="/Hobby" method="post" onsubmit="return hobbyChk();">	
-		<label>ID : <input type="text" name="id"></label>
-		<label>취미 : <input type="text" name="name" value="${data.name}"></label>
-		<input type="submit" value="등록">
-	</form>
-	</div>
+	<c:if test="${sessionScope.loginUser != null }">
+		<div>
+		<form id="frm" action="/Hobby" method="post" onsubmit="return hobbyChk();">	
+			<label>취미 : <input type="text" name="nm" value="${data.name}"></label>
+			<input type="submit" value="등록">
+		</form>
+		</div>
+	</c:if>
 	<table>
 		<tr>
 			<th>ID</th>
 			<th>취미명</th>
 			<th></th>
 		</tr>
-	<% for(HobbyEntity vo : list){ %>
+	<c:forEach begin="1" end="${requestScope.endIdx}" var="idx">
+		${idx}
+	</c:forEach>
+		
+ 	<c:forEach items="${requestScope.list}" var="item">
 		<tr>
-			<td><%=vo.getId() %></td>
-			<td><%=vo.getName() %></td>
+			<td>${item.id}</td>
+			<td>${item.nm}</td>
 			<td>
-				<button onclick="chkDel(<%=vo.getId()%>)">삭제</button>
-				<a href="/modHobby?id=<%=vo.getId()%>"><button>수정</button></a>
+				<button onclick="chkDel(${item.id})">삭제</button>
+				<a href="/modHobby?id=${item.id}"><button>수정</button></a>
 			</td>
 		</tr>
-	<% } %>
+	</c:forEach>
 	</table>
 	<script src="./JS/common.js"></script>
 </body>

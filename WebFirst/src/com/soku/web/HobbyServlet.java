@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/Hobby")
 public class HobbyServlet extends HttpServlet {
@@ -18,6 +19,11 @@ public class HobbyServlet extends HttpServlet {
 
 		List<HobbyEntity> list = DAO.selHobbyList();
 		request.setAttribute("list", list);
+		
+		request.setAttribute("endIdx", 10);
+		
+		HttpSession hs = request.getSession();
+		hs.setAttribute("loginUser", "");
 
 		String jsp = "WEB-INF/JSP/Hobby.jsp";
 		request.getRequestDispatcher(jsp).forward(request, response);
@@ -34,7 +40,7 @@ public class HobbyServlet extends HttpServlet {
 		//TODO : 등록처리
 		HobbyEntity param = new HobbyEntity();
 		param.setId(id);
-		param.setName(hobby_nm);
+		param.setNm(hobby_nm);
 		int result = DAO.insHobby(param);
 		
 		//주소로 화면 띄우기

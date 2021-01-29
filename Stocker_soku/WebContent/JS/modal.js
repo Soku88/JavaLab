@@ -5,7 +5,7 @@ function setModal(data) {
 	modal_inner.innerHTML = `
 		<img alt="Open modal - Image ${data.title}" src="/images/img/${data.file_nm}">
 		<h3>${data.title}</h3>
-		<p><strong>${data.author_nm}</strong></p>
+		<p><strong>${data.author_id}</strong></p>
 		<p>${data.caption}</p>		
 		<p><small>${data.regdate}</small></p>
 		<a href="/images/img/${data.file_nm}" download>Download Image</a>
