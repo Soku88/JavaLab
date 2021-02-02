@@ -26,7 +26,7 @@ public class UserController {
 
 	@GetMapping("/login")
 	public void login(Model model) {
-		
+
 	}
 
 	@ResponseBody
@@ -39,6 +39,12 @@ public class UserController {
 		returnVal.put("result", service.login(p, hs));
 
 		return returnVal;
+	}
+
+	@GetMapping("/logout")
+	public String logout(HttpSession hs) {
+		hs.invalidate();
+		return "redirect:/user/login";
 	}
 
 	@GetMapping("/join")
@@ -64,4 +70,5 @@ public class UserController {
 		return returnVal;
 
 	}
+
 }

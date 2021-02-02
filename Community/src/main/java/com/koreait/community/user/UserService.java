@@ -24,6 +24,7 @@ public class UserService {
 		if (p.getUserId() == null || p.getUserId().length() < 2) {
 			return 0;
 		}
+		
 		// 비밀번호 암호화
 		if(chkId(p) == 0) {
 			
@@ -37,7 +38,6 @@ public class UserService {
 		return 0;
 	}
 
-	// 1: success, 2: 아이디 없음, 3: 비밀번호 틀림
 	public int login(UserEntity p, HttpSession hs) {
 		UserEntity data = mapper.selUser(p);
 		if (data == null) {

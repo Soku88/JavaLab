@@ -82,6 +82,7 @@ if (joinBtnEle) {
   var userPwEle = frmEle.userPw
   var userPwReEle = frmEle.userPwRe
   var nmEle = frmEle.nm
+  var genderEle = frm.gender
 
   function ajax2() {
     if (userIdEle.value === '') {
@@ -100,8 +101,8 @@ if (joinBtnEle) {
     var paramObj = {
       userId: userIdEle.value,
       userPw: userPwEle.value,
-      userPwRe: userPwReEle.value,
-      nm: nmEle.value
+      nm: nmEle.value,
+      gender: genderEle.value
     }
     fetch('/user/join', {
       method: 'post',
@@ -112,10 +113,10 @@ if (joinBtnEle) {
     }).then(function(res) {
       return res.json()  
     }).then(function(myJson) {
-      joinOk(myJson)
+      proc(myJson)
     })
   }
-  function joinOk(myJson) {
+  function proc (myJson) {
     if (myJson.result === 1) {
       location.href = "/user/login"
     } else {
