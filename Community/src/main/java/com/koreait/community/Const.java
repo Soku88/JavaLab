@@ -2,6 +2,7 @@ package com.koreait.community;
 
 import java.util.List;
 
+import com.koreait.community.model.BoardEntity;
 import com.koreait.community.model.BoardManageEntity;
 
 public class Const {
