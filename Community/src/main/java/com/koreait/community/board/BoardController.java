@@ -53,7 +53,7 @@ public class BoardController {
 
 	@GetMapping("/detail")
 	public void detail(Model model, BoardDTO p, HttpSession hs) {
-		model.addAttribute(Const.KEY_DATA, service.selBoard(p, hs));
+		model.addAttribute(Const.KEY_DATA, service.selBoardWithHits(p, hs));
 	}
 	
 	@ResponseBody
@@ -61,8 +61,22 @@ public class BoardController {
 	public Map del(BoardEntity p, HttpSession hs) {
 		p.setUserPk(sUtils.getLoginUserPk(hs));
 		System.out.println("boardPk : " + p.getBoardPk());
-		Map<String, Object> rVal = new HashMap();
-		rVal.put(Const.KEY_DATA, service.updBoard(p));
+		Map<String, Object> rVal = new HashMap<>();
+		rVal.put(Const.KEY_DATA, service.delBoard(p));
 		return rVal;
+	}
+	
+	@GetMapping("/edit")
+	public String edit(BoardDTO p, Model model) {
+		model.addAttribute(Const.KEY_DATA, service.selBoard(p));
+		return "board/writeEdit";
+	}
+	@PostMapping("/edit")
+	public String editProc(BoardEntity p, HttpSession hs) {
+		p.setUserPk(sUtils.getLoginUserPk(hs));
+		int result = service.updBoard(p);
+		
+		return "redirect:/board/detail?boardPk=" + p.getBoardPk();
+		
 	}
 }
