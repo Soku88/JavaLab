@@ -9,21 +9,28 @@ import com.koreait.community.model.UserEntity;
 
 @Component
 public class SecurityUtils {
-
+	
 	public int getLoginUserPk(HttpSession hs) {
-		UserEntity loginUser = getLoginUser(hs);
-		
-		return loginUser == null ? -1 : loginUser.getUserPk();
+		UserEntity loginUser = getLoginUser(hs);		
+		return loginUser == null ? 0 : loginUser.getUserPk();
+		/*
+		if(loginUser == null) {
+			return 0;
+		} else {
+			return loginUser.getUserPk();
+		}
+		*/
 	}
+	
 	public UserEntity getLoginUser(HttpSession hs) {
-		return (UserEntity) hs.getAttribute(Const.KEY_LOGINUSER);
+		return (UserEntity)hs.getAttribute(Const.KEY_LOGINUSER);
 	}
-
+	
 	public String getSalt() {
 		return BCrypt.gensalt();
 	}
-
-	public String getHashPw(String pw, String salt) {
+	
+	public String getHashPw(String pw, String salt) {		
 		return BCrypt.hashpw(pw, salt);
 	}
 }
