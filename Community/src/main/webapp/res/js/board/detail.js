@@ -86,6 +86,14 @@ function selCmtList() {
 						}
 					});
 			}
+			var delBtn = document.createElement("input");
+			delBtn.type = "button";
+			delBtn.value = "삭제";
+			delBtn.addEventListener("click", function () {
+				if (confirm("삭제 하시겠습니까?")) {
+					delAjax();
+				}
+			});
 
 			//수정 처리
 			function modAjax(param) {
@@ -106,15 +114,6 @@ function selCmtList() {
 						}
 					});
 			}
-
-			var delBtn = document.createElement("input");
-			delBtn.type = "button";
-			delBtn.value = "삭제";
-			delBtn.addEventListener("click", function () {
-				if (confirm("삭제 하시겠습니까?")) {
-					delAjax();
-				}
-			});
 
 			var editBtn = document.createElement("input");
 			editBtn.type = "button";

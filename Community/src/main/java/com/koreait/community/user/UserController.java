@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.koreait.community.Const;
+import com.koreait.community.SecurityUtils;
 import com.koreait.community.model.UserEntity;
 
 @Controller
@@ -23,6 +26,9 @@ public class UserController {
 
 	@Autowired
 	private UserService service;
+	
+	@Autowired
+	private SecurityUtils sUtils;
 
 	@GetMapping("/login")
 	public void login(Model model) {
@@ -69,6 +75,21 @@ public class UserController {
 
 		return returnVal;
 
+	}
+
+	@GetMapping("/profile")
+	public void profile(HttpSession hs, UserEntity p, Model model) {
+		p.setUserPk(sUtils.getLoginUserPk(hs));
+		model.addAttribute(Const.KEY_DATA, service.selUser(p));
+		
+	}
+	
+	@ResponseBody
+	@PostMapping("/profile")
+	public int profile(MultipartFile profileImg, HttpSession hs) {
+		System.out.println("fileName : " + profileImg.getOriginalFilename());
+		return service.uploadProfile(profileImg, hs);
+		
 	}
 
 }

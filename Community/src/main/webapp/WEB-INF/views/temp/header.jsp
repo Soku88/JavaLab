@@ -10,7 +10,7 @@
 	<nav>
 		<ul class="menuItems">
 			<li><c:choose>
-					<c:when test="${sessionScope.loginUser ==  null}">
+					<c:when test="${sessionScope.loginUser == null}">
 						<a href="/user/login">로그인</a>
 					</c:when>
 					<c:otherwise>
@@ -23,6 +23,11 @@
 						<c:out value="${menu.nm}" />
 				</a></li>
 			</c:forEach>
+			<c:if test="${sessionScope.loginUser != null}">
+				<li>
+					<a href="/user/profile">프로필</a>
+				</li>
+			</c:if>
 		</ul>
 	</nav>
 </header>

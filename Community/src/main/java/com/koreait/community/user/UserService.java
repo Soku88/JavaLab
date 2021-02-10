@@ -1,9 +1,16 @@
 package com.koreait.community.user;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
+
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.koreait.community.Const;
 import com.koreait.community.SecurityUtils;
@@ -52,6 +59,7 @@ public class UserService {
 		data.setUserPw(null);
 		data.setSalt(null);
 		data.setRegDt(null);
+		data.setProfileImg(null);
 		hs.setAttribute(Const.KEY_LOGINUSER, data);
 		return 1;
 	}
@@ -61,6 +69,44 @@ public class UserService {
 		if (data == null) {
 			return 0;
 		}
+		return 1;
+	}
+	
+	public UserEntity selUser(UserEntity p) {
+		return mapper.selUser(p);
+	}
+	
+	public int uploadProfile(MultipartFile mf, HttpSession hs) {
+		
+		int userPk = sUtils.getLoginUserPk(hs);
+		
+		
+		String basePath = hs.getServletContext().getRealPath("/res/img/user" + userPk);
+		File folder = new  File(basePath);
+		if(!folder.exists()) {
+			folder.mkdirs();
+		}
+		
+		System.out.println("basePath : " + basePath);
+		
+		String originalFileNm = mf.getOriginalFilename();
+		String ext = FilenameUtils.getExtension(originalFileNm);
+		
+		System.out.println("ext : " + ext);
+		
+		String fileNm = UUID.randomUUID().toString();
+		System.out.println("fileNm : " + fileNm);
+		
+		try {
+			byte[] fileDate = mf.getBytes();
+			File target = new File(basePath + "/" + fileNm);
+			FileCopyUtils.copy(fileDate, target);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
 		return 1;
 	}
 
