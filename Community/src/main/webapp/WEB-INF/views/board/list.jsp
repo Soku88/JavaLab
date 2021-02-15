@@ -11,8 +11,8 @@
 	</c:if>
 </div>
 
-<div>
-	<c:choose>
+<div id="listContent" data-category="${param.category}">
+	<%-- <c:choose>
 		<c:when test="${fn:length(requestScope.list) == 0}">
 			<div>글이 없습니다</div>
 		</c:when>
@@ -36,7 +36,7 @@
 				</c:forEach>
 			</table>
 		</c:otherwise>
-	</c:choose>
+	</c:choose> --%>
 </div>
 <div>페이징처리</div>
 

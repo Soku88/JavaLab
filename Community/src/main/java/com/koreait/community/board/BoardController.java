@@ -1,6 +1,7 @@
 package com.koreait.community.board;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -31,12 +32,15 @@ public class BoardController {
 	private SecurityUtils sUtils;
 
 	@GetMapping("/home")
-	public void home() {
-	}
+	public void home() {}
 
 	@GetMapping("/list")
-	public void list(BoardDTO p, Model model) {
-		model.addAttribute(Const.KEY_LIST, service.selBoardList(p));
+	public void list() {}
+	
+	@ResponseBody
+	@GetMapping("/listData")
+	public List<BoardDomain> listDate(BoardDTO p) {
+		return service.selBoardList(p);
 	}
 
 	@GetMapping("/write")
