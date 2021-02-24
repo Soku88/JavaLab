@@ -44,7 +44,7 @@
 		<beans:constructor-arg ref="hikariConfig" />
 	</beans:bean>
 	
-    <beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+  <beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <beans:property name="dataSource" ref="dataSource"/>
         <beans:property name="typeAliasesPackage" value="com.koreait.community"/>        
     </beans:bean>

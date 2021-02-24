@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.koreait.apart.HomeMapper">
+	<insert id="insApart">
+		insert into apartment_info
+		(
+			dong, jibun, apartment_name, deal_amount, build_year, deal_year, deal_month, 
+			deal_day, area_for_exclusive_use, flr, location_cd
+		)
+		values
+		<foreach collection="list" item="item" open="(" close=")" separator=",">
+			#{item.dong}, #{item.jibun}, #{item.apartment_name}, ${item.deal_amount}, 
+			#{item.build_year}, #{item.deal_year}, #{item.deal_month}, #{item.deal_day}, 
+			#{item.area_for_exclusive_use}, #{item.flr}, #{location_cd}
+		</foreach>
+	</insert>
+	
+	<select id="selApart" resultType="ApartmentInfoDomain">
+		select 
+		A.*, B.local_nm 
+		from apartment_info A
+		left join location_code B
+		on A.location_cd = B.cd
+		where location_cd = #{location_cd}
+		and deal_year = #{deal_year}
+		and deal_month = #{deal_month}
+	</select>
+	
+	<select id="selLocation" resultType="LocationEntity">
+		select * from location_code
+	</select>
+</mapper>
